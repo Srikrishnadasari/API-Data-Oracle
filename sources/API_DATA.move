@@ -3,19 +3,19 @@ module sri_address::ApiDataOracle {
     use aptos_framework::timestamp;
     use std::string::String;
 
-    /// Struct representing an API data entry stored on-chain
+    
     struct DataEntry has store, key {
-        data_value: String,     // The actual data fetched from API
-        last_updated: u64,      // Timestamp when data was last updated
-        source_url: String,     // URL/identifier of the data source
-        is_active: bool,        // Whether this data source is currently active
+        data_value: String,     
+        last_updated: u64,      
+        source_url: String,      
+        is_active: bool,         
     }
 
-    /// Error codes
+   
     const E_DATA_ENTRY_NOT_FOUND: u64 = 1;
     const E_UNAUTHORIZED_UPDATE: u64 = 2;
 
-    /// Function to register a new API data source and store initial data
+    
     public fun register_data_source(
         oracle_owner: &signer, 
         source_url: String, 
@@ -30,21 +30,21 @@ module sri_address::ApiDataOracle {
         move_to(oracle_owner, data_entry);
     }
 
-    /// Function to update existing API data (only callable by the oracle owner)
+   
     public fun update_data(
         oracle_owner: &signer, 
         owner_address: address, 
         new_data: String
     ) acquires DataEntry {
-        // Ensure only the owner can update their data
+         
         assert!(signer::address_of(oracle_owner) == owner_address, E_UNAUTHORIZED_UPDATE);
         
-        // Check if data entry exists
+       
         assert!(exists<DataEntry>(owner_address), E_DATA_ENTRY_NOT_FOUND);
         
         let data_entry = borrow_global_mut<DataEntry>(owner_address);
         
-        // Update the data with new information and timestamp
+        
         data_entry.data_value = new_data;
         data_entry.last_updated = timestamp::now_seconds();
     }
@@ -61,4 +61,5 @@ module sri_address::ApiDataOracle {
             data_entry.is_active
         )
     }
+
 }

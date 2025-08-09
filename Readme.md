@@ -76,6 +76,6 @@ The ultimate goal is to foster a robust ecosystem where real-world data can be e
 
 ## Contract Details
 
-*[Contract deployment details, addresses, and technical specifications will be added here]*
 0x0b53f4c42cc12cebcdb0c427f3e27e915ef4e4a8b96e123bc293e2d71d8738f6
+
 ![alt text](image.png)

@@ -1,0 +1,15 @@
+[package]
+name = "API_DATA"
+version = "1.0.0"
+authors = []
+
+[addresses]
+sri_address="cd0b4d798b30ad750fb1c742eb0b5f85eaa3488a2d6365306a1ff8c53b80afbd"
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
